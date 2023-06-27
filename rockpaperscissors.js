@@ -15,17 +15,34 @@ const sanitize = playerInput => playerInput.toLowerCase();
     
 // );
 
-// function round(playerSelection, computerSelection) {
-//     playerSelection = sanitize(playerSelection);
-//     if(playerSelection === 'rock') {
-//         if(computerSelection === 'rock') {
-//             console.log("You tie! You both played Rock");
-//         } else if(computerSelection === 'paper') {
-//             console.log("You lose! Paper beats Rock!");
-//         } else {
-//             console.log("You win! Rock beats Scissors!");
-//         }
-//     } 
-// }
+function round(playerSelection, computerSelection) {
+    playerSelection = sanitize(playerSelection);
+    if(playerSelection === 'rock') {
+        if(computerSelection === 'rock') {
+            console.log("You tie! You both played Rock!");
+        } else if(computerSelection === 'paper') {
+            console.log("You lose! Paper beats Rock!");
+        } else {
+            console.log("You win! Rock beats Scissors!");
+        }
+    } else if (playerSelection === 'paper') {
+        if(computerSelection === 'rock') {
+            console.log("You win! Paper beats Rock!");
+        } else if(computerSelection === 'paper') {
+            console.log("You tie! You both played paper!");
+        } else {
+            console.log("You lose! Scissors beats Paper!");
+        }
+    } else {
+        if(computerSelection === 'rock') {
+            console.log("You lose! Rock beats scissors");
+        } else if(computerSelection === 'paper') {
+            console.log("You win! Scissors beats paper!");
+        } else {
+            console.log("You tie! You both played Scissors!");
+        }
+    } 
+
+}
 
 console.log(getComputerChoice());
