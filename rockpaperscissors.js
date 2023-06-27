@@ -67,10 +67,15 @@ function game() {
             case 1:
                 playerScore++;
         }
+        rounds++;
     }
+    console.log(`Results:
+        Player score: ` + playerScore + `
+        Computer Score: ` + computerScore);
 }
 
-let playerChoice = 'rock';
-let computerChoice = getComputerChoice();
-console.log("player choice is: " + playerChoice + " and the computers choice is: " + computerChoice);
-round(playerChoice, computerChoice);
+// let playerChoice = 'rock';
+// let computerChoice = getComputerChoice();
+// console.log("player choice is: " + playerChoice + " and the computers choice is: " + computerChoice);
+// round(playerChoice, computerChoice);
+game();
