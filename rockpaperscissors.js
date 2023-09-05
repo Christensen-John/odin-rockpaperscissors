@@ -2,6 +2,7 @@
 const gameButtons = document.querySelectorAll("div.input>button");
 const scoreboard = document.querySelectorAll("div.score-window>h3:last-child");
 const resetBtn = document.querySelector("#reset");
+const resultLabel = document.querySelector("#roundResult");
 let playerScore = 0;
 let computerScore = 0;
 
@@ -75,38 +76,61 @@ function round(playerSelection, computerSelection) {
   } else if (playerSelection === "rock") {
     if (computerSelection === "rock") {
       // console.log("You tie! You both played Rock!");
+      resultLabel.textContent = "You tied!";
     } else if (computerSelection === "paper") {
       // console.log("You lose! Paper beats Rock!");
+      resultLabel.textContent = "The computer won the round!";
       computerScore++;
     } else {
       // console.log("You win! Rock beats Scissors!");
+      resultLabel.textContent = "You won the round!";
       playerScore++;
     }
   } else if (playerSelection === "paper") {
     if (computerSelection === "rock") {
       // console.log("You win! Paper beats Rock!");
+      resultLabel.textContent = "You won the round!";
       playerScore++;
     } else if (computerSelection === "paper") {
       // console.log("You tie! You both played paper!");
+      resultLabel.textContent = "You tied!";
     } else {
       // console.log("You lose! Scissors beats Paper!");
+      resultLabel.textContent = "The computer won the round!";
       computerScore++;
     }
   } else {
     if (computerSelection === "rock") {
       // console.log("You lose! Rock beats scissors");
+      resultLabel.textContent = "The computer won the round!";
       computerScore++;
     } else if (computerSelection === "paper") {
       // console.log("You win! Scissors beats paper!");
+      resultLabel.textContent = "You won the round!";
       playerScore++;
     } else {
       // console.log("You tie! You both played Scissors!");
+      resultLabel.textContent = "You tied!";
     }
   }
   updateScore();
 }
 
 function updateScore() {
+  if (playerScore === 5) {
+    window.alert("You won the game!");
+    playerScore = 0;
+    computerScore = 0;
+    resultLabel.textContent = "";
+    updateScore();
+  }
+  if (computerScore === 5) {
+    window.alert("You lost the game!");
+    playerScore = 0;
+    computerScore = 0;
+    resultLabel.textContent = "";
+    updateScore();
+  }
   scoreboard[0].textContent = playerScore;
   scoreboard[1].textContent = computerScore;
 }
