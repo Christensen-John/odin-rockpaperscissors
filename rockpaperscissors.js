@@ -1,6 +1,7 @@
 /* || Variables and Data */
 const gameButtons = document.querySelectorAll("div.input>button");
 const scoreboard = document.querySelectorAll("div.score-window>h3:last-child");
+const resetBtn = document.querySelector("#reset");
 let playerScore = 0;
 let computerScore = 0;
 
@@ -9,6 +10,16 @@ gameButtons.forEach((button) => {
   button.addEventListener("click", (e) => {
     gameInput(e.target);
   });
+});
+
+resetBtn.addEventListener("click", () => {
+  let ans = window.confirm("Are you sure you want to reset the scores?");
+  if (ans) {
+    playerScore = 0;
+    computerScore = 0;
+    console.clear();
+    updateScore();
+  }
 });
 /*
 1. Listen for click
@@ -107,5 +118,4 @@ function game() {
 }
 
 // || Setup the Game //
-
 game();
